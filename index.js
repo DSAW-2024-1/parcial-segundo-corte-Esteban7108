@@ -89,7 +89,7 @@ app.get('/users/:count', (req, res) => {
     const countParam = req.params.count;
 
     if (!/^\d+$/.test(countParam)) {
-        return res.status(400).json({ error: 'El parámetro count debe ser un número entero.' });
+        res.send('El parámetro count debe ser un número entero.' );
     }
 
     const count = parseInt(countParam);
@@ -138,11 +138,11 @@ app.post('/users', (req, res) => {
     if (!name || !textoRegex.test(name) || 
         !lastName || !textoRegex.test(lastName) || 
         !email || typeof email !== 'string') {
-        return res.status(400).json({ error: 'Los campos de nombre y apellido son obligatorios y deben contener solo letras, y el campo de correo debe ser una cadena de texto.' });
+        res.send('Los campos de nombre y apellido son obligatorios y deben contener solo letras, y el campo de correo debe ser una cadena de texto.' );
     }
 
     if ((city && !textoRegex.test(city)) || (country && !textoRegex.test(country))) {
-        return res.status(400).json({ error: 'Los campos de ciudad y país, si están presentes, deben contener solo letras.' });
+        res.send('Los campos de ciudad y país, si están presentes, deben contener solo letras.' );
     }
 
     const ciudadDefecto = city || 'Bogotá';
