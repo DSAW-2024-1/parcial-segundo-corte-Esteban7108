@@ -168,3 +168,5 @@ app.post('/users', (req, res) => {
 app.listen(PORT, () => {
     console.log(`El servidor está escuchando en http://localhost:${PORT}`);
 });
+
+module.exports = app;
